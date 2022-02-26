@@ -7,7 +7,7 @@
 
 function maxChar(str) {
   const charMap = {};
-  for (char of str) {
+  for (let char of str) {
     charMap[char] ? charMap[char]++ : (charMap[char] = 1);
   }
   return Object.keys(charMap).reduce((max, next) => (charMap[max] > charMap[next] ? max : next));
