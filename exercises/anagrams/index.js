@@ -9,22 +9,30 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  const cleanA = stringA.replace(/[^\w]/g, "").toLowerCase();
-  const cleanB = stringB.replace(/[^\w]/g, "").toLowerCase();
-  if (cleanA.length !== cleanB.length) return false;
-  const mapA = {};
-  const mapB = {};
-  for (let i = 0; i <= cleanA.length - 1; i++) {
-    mapA[cleanA[i]] = ++mapA[cleanA[i]] || (mapA[cleanA[i]] = 1);
-    mapB[cleanB[i]] = ++mapB[cleanB[i]] || (mapB[cleanB[i]] = 1);
-  }
-
-  for (char in mapA) {
-    if (mapA[char] !== mapB[char]) {
-      return false;
-    }
-  }
-  return true;
+  const cleanA = stringA.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
+  const cleanB = stringB.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
+  return cleanA === cleanB;
 }
 
 module.exports = anagrams;
+
+// function anagrams(stringA, stringB) {
+// const cleanA = stringA.replace(/[^\w]/g, "").toLowerCase();
+// const cleanB = stringB.replace(/[^\w]/g, "").toLowerCase();
+//   if (cleanA.length !== cleanB.length) return false;
+//   const mapA = {};
+//   const mapB = {};
+//   for (let i = 0; i <= cleanA.length - 1; i++) {
+//     mapA[cleanA[i]] = ++mapA[cleanA[i]] || (mapA[cleanA[i]] = 1);
+//     mapB[cleanB[i]] = ++mapB[cleanB[i]] || (mapB[cleanB[i]] = 1);
+//   }
+
+//   for (char in mapA) {
+//     if (mapA[char] !== mapB[char]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// Object.keys();
