@@ -11,3 +11,19 @@
 function chunk(array, size) {}
 
 module.exports = chunk;
+
+// function chunk(array, size) {
+//   const chunkArr = [];
+//   let tempArr = [];
+//   for (let i = 0; i <= array.length - 1; i++) {
+//     if (tempArr.length === size) {
+//       chunkArr.push(tempArr);
+//       tempArr = [];
+//     }
+//     tempArr.push(array[i]);
+//     if (i === array.length - 1) {
+//       chunkArr.push(tempArr);
+//     }
+//   }
+//   return chunkArr;
+// }
