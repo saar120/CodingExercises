@@ -97,7 +97,7 @@ class LinkedList {
   }
 
   removeAt(index) {
-    if (!this.head) return null;
+    if (!this.head) return;
 
     if (index === 0) {
       this.head = this.head.next;
@@ -105,11 +105,52 @@ class LinkedList {
     }
 
     const prev = this.getAt(index - 1);
-    if (!prev.next) return null;
+    if (!prev || !prev.next) return;
 
     const node = prev.next;
 
     prev.next = node.next;
+  }
+
+  insertAt(data, index) {
+    const newNode = new Node(data);
+
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+
+    if (index === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+
+    const prev = this.getAt(index - 1) || this.getLast();
+
+    const after = prev.next;
+
+    newNode.next = after;
+
+    prev.next = newNode;
+  }
+
+  forEach(func) {
+    let index = 0;
+    let node = this.head;
+    while (node) {
+      func(node, index);
+      index++;
+      node = node.next;
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
   }
 }
 
